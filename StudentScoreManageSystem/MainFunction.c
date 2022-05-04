@@ -1388,7 +1388,7 @@ void StuDeleteScore(Scorelist* listScore, const char* Input)
 void DeleteStuName(StuList* listStudent, StuCourseList* listStuCourse, Scorelist* listScore)
 {    
     int i;
-    char Input[20];
+    char Input[25];
     int searchNum=0;
 
 
@@ -1434,7 +1434,7 @@ void DeleteCourse(CourseList* listCourse, const int targetNum)
 void DeleteCourseName(CourseList* listCourse)
 {
     int i;
-    char Input[20];
+    char Input[25];
     int searchNum = 0;
 
 
@@ -1470,7 +1470,7 @@ void DeleteCourseName(CourseList* listCourse)
 void DeleteStuCourse(StuCourseList* listStudentCourse,const CourseList* listCourse,const StuList* listStudent)
 {
     int i;
-    char Input[20];
+    char Input[25];
     int searchNum = 0;
 
     SearchInputStudentID(Input);

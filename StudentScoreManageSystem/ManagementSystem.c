@@ -321,7 +321,7 @@ int main(void)
                     switch (deleteMenuC)
                     {
 
-                        char Input[20];
+                        char Input[25];
                         int search;
                      //删除学生列表中的内容
                     case'1':
@@ -436,7 +436,7 @@ int main(void)
                     system("cls");
                     switch (queryMenuC)
                     {
-                        char Input[20];
+                        char Input[25];
                         int search;
                         
                      //查询学生列表中的记录———————————————————————————————
@@ -483,7 +483,7 @@ int main(void)
 
                         while (tolower(queryMethodC = QueryCourseMethodMenu()) != 'q')
                         {
-                            char Input[20];
+                            char Input[25];
                             int search;
                             
                             switch (queryMethodC)
