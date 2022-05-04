@@ -1940,7 +1940,7 @@ void WriteToFileList(const StuList* listStudent, const CourseList* listCourse, c
     }
     else
     {
-        OutPutFailure;
+        OutPutFailure();
     }
     
 
