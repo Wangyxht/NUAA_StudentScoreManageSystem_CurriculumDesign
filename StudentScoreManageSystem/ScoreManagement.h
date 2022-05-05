@@ -274,7 +274,7 @@ extern int CourseReplaceSearch(const CourseList*, const char*);
 //置入新的课程信息
 extern void CourseListInsert(CourseList*, Course*);
 //替换课程信息
-extern void CourselistReplace(CourseList*, Course*, const int);
+extern void CourselistReplace(CourseList*, Course*, Scorelist*, const int);
 //置入新的选课信息
 extern void StuCourseListInsert(StuCourseList*, StuCourse*);
 //输入学生选课信息（带验证）
@@ -282,7 +282,7 @@ extern int InputStuCourseData(StuCourse*, CourseList* , StuList* );
 //顺序查找选课表学号课程号匹配项
 extern int StuCourseReplaceSearch(StuCourseList*,const char*,const char*);
 //替换选课信息
-extern void StuCourseListReplace(StuCourseList*, StuCourse*, const int);
+extern void StuCourseListReplace(StuCourseList*, StuCourse*,  const int);
 //将新增的学生信息导入成绩表
 extern void InsertScoreListStu(Scorelist*,Student*);
 //替换成绩表内学生名称（以学生ID为唯一凭证）

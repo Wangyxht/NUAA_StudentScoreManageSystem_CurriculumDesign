@@ -252,7 +252,7 @@ int main(void)
                             Course InsertCourseElement;
 
                             InputCourseData(&InsertCourseElement);
-                            if (replace=CourseReplaceSearch(&ListCourse, InsertCourseElement.couresID) == -1)
+                            if ((replace=CourseReplaceSearch(&ListCourse, InsertCourseElement.couresID)) == -1)
                             {
                                 CourseListInsert(&ListCourse,&InsertCourseElement);
                             }
@@ -261,7 +261,7 @@ int main(void)
                                 //检测是否重复时，课程号作为唯一比较凭证
                                 if (ReplaceMenu() == 'y')
                                 {
-                                    CourselistReplace(&ListCourse, &InsertCourseElement, replace);
+                                    CourselistReplace(&ListCourse, &InsertCourseElement,&ListScore, replace);
                                 }
                                 else
                                 {

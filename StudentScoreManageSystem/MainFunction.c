@@ -614,6 +614,7 @@ void PrintStudentList(const StuList* liststudent)
 
             if (i > 0 && i % 10==0)
             {
+                PrintLine();
                 system("pause");
                 system("cls");
                 printf("\t\t\t                            *学生信息列表*\n\n");
@@ -646,6 +647,9 @@ void PrintCourseList(const CourseList* listCourse)
 
         if (i > 0 && i % 10 == 0)
         {
+            PrintLine();
+            system("pause");
+            system("cls");
             printf("\n\n\n\n");
 
             printf("\t\t\t                            *课程信息列表*\n\n");
@@ -679,6 +683,9 @@ void PrintScoreList(const Scorelist* listScore)
 
         if (i > 0 && i % 10 == 0)
         {
+            PrintLine();
+            system("pause");
+            system("cls");
             printf("\n\n\n\n");
 
             printf("\t\t\t                            *成绩信息列表*\n\n");
@@ -1177,10 +1184,23 @@ void StuCourseListInsert(StuCourseList* listStuCourse, StuCourse* insertData)
 
 }
 
-void CourselistReplace(CourseList* listCourse, Course* replaceData, const int replace)
+void CourselistReplace(CourseList* listCourse, Course* replaceData,Scorelist*listScore, const int replace)
 {
+    int i;
     replaceData->scorelistLocation = listCourse->CourseListData[replace].scorelistLocation;
     listCourse->CourseListData[replace] = *replaceData;
+
+    for (i = 0; i < listScore->lengthScore; i++)
+    {
+        if (listScore->StuScoreData[i].score[replaceData->scorelistLocation] >= 0)
+        {
+            float totalCredit = 0;
+
+            listScore->StuScoreData[i].weightAverage = CalculateAverage(listScore->StuScoreData[i].score, listCourse, &totalCredit);
+            listScore->StuScoreData[i].creditTotal = totalCredit;
+        }
+    }
+
 }
 
 int InputStuCourseData(StuCourse* Input, CourseList* listCourse, StuList* listStudent)
