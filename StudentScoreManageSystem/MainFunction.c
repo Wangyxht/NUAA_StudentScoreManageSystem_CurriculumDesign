@@ -1858,15 +1858,18 @@ void SearchScoreStudentName(const Scorelist* listScore, const CourseList* listCo
     int search;
     int searchNum=0;
 
-    printf("\n\n\n\n\n");
-    printf("\t\t为您查到该关键字的以下数据：\n\n");
 
 
 
     for (i = 0; i < listScore->lengthScore; i++)
     {
+
+
         if (strstr(listScore->StuScoreData[i].studentName,studentName))
         {
+            system("cls");
+            printf("\n\n\n\n\n");
+            printf("\t\t为您查到该关键字的以下数据：\n\n");
             printf("\t\t%s-%s\n", listScore->StuScoreData[i].studentID, listScore->StuScoreData[i].studentName);
             PrintLine();
             printf("\t\t\t课程                       课程号        成绩\n");
@@ -1892,7 +1895,10 @@ void SearchScoreStudentName(const Scorelist* listScore, const CourseList* listCo
                 }
             }
             PrintLine();
-            printf("\t\t\t总成绩：%3.3f\t总学分：3.2%f\t总排名：%d\n", listScore->StuScoreData[i].weightAverage, listScore->StuScoreData[i].creditTotal, i+1);
+            printf("\t\t\t总成绩：%3.3f\t总学分：%3.2f\t总排名：%d\n", listScore->StuScoreData[i].weightAverage, listScore->StuScoreData[i].creditTotal, i+1);
+            PrintLine();
+            system("pause");
+            
 
         }
 
@@ -1904,8 +1910,8 @@ void SearchScoreStudentName(const Scorelist* listScore, const CourseList* listCo
         printf("\n\n\t\t\t\t\t\t无搜索结果\n\n");
     }
 
-    PrintLine();
-    system("pause");
+
+    //system("pause");
     system("cls");
 }
 

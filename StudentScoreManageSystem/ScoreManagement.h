@@ -19,11 +19,11 @@
 //每次分配新内存的长度
 #define LIST_INCREASE 10
 //初始课程表文件行数
-#define MAX_COURSELIST_LINE 8
+//#define MAX_COURSELIST_LINE 8
 //初始选课表文件行数
-#define MAX_STUCOURSELIST_LINE 14
+//#define MAX_STUCOURSELIST_LINE 14
 //初始学生表文件行数
-#define MAX_STULIST_LINE 9
+//#define MAX_STULIST_LINE 9
 //最大成绩个数
 #define MAX_SCORE_DATA 30
 //最大学生ID长度
