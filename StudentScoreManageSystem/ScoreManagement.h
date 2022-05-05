@@ -178,15 +178,18 @@ extern inline void InputStuCourseFailure(void);
 
 //初始化相关函数声明
 // ———————————————————————————————————————
-
 //初始化空表
 extern int InitiList(Scorelist*,CourseList*,StuCourseList*,StuList*);
 //写入课程文件信息
-extern int LoadFileClassInf(CourseList*);
+extern int LoadFileClassInf(CourseList*,int);
 //写入学生选课信息文件
-extern int LoadFileStuClassInf(StuCourseList*);
+extern int LoadFileStuClassInf(StuCourseList*,int);
 //写入学生名单信息
-extern int LoadFileStuInf(StuList*);
+extern int LoadFileStuInf(StuList*,int);
+//导入前查询学生、课程、选课表行数
+extern void CheckDataFileRow(int*,int*,int*);
+//返回单个文件行数
+extern int CheckOneFileRow(FILE*);
 //创建学生成绩单线性表
 extern int CreatScoreList(Scorelist*,StuList*,StuCourseList*,CourseList*);
 //获取某门课程在成绩表中score[n]的位置n

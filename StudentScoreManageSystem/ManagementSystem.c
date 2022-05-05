@@ -51,13 +51,17 @@ int main(void)
             switch (mainMenuC)
             { 
 
+
              //载入默认路径文件信息——————————————————————————————————————————
             case '1':
                 system("cls");
+                int rowStu = 0, rowCourse = 0, rowStuCourse = 0;
+                CheckDataFileRow(&rowStu, &rowCourse, &rowStuCourse);
+
                 //从.txt文件载入信息。
-                LoadFileClassInf(&ListCourse);
-                LoadFileStuClassInf(&ListStuCourse);
-                LoadFileStuInf(&ListStudent);
+                LoadFileClassInf(&ListCourse,rowCourse);
+                LoadFileStuClassInf(&ListStuCourse,rowStuCourse);
+                LoadFileStuInf(&ListStudent,rowStu);
 
                 if (CreatScoreList(&ListScore, &ListStudent, &ListStuCourse, &ListCourse))
                 {   

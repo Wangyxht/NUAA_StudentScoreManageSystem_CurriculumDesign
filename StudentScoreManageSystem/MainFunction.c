@@ -420,7 +420,7 @@ int InitiList(Scorelist* listScore,CourseList* listCourse,StuCourseList* listStu
     
 }
 //写入课程信息
-int LoadFileClassInf(CourseList* listCourse)
+int LoadFileClassInf(CourseList* listCourse, int row)
 {
     FILE* fp;
     int line;
@@ -433,7 +433,7 @@ int LoadFileClassInf(CourseList* listCourse)
     }
     else
     {
-        for (line = 0; line < MAX_COURSELIST_LINE; line++)
+        for (line = 0; line < row; line++)
         {   
             listCourse->lengthCourse++;
             listCourse->CourseListData[line].scorelistLocation = line;
@@ -447,7 +447,7 @@ int LoadFileClassInf(CourseList* listCourse)
 
 }
 //写入学生选课信息
-int LoadFileStuClassInf(StuCourseList* listStuCourse)
+int LoadFileStuClassInf(StuCourseList* listStuCourse,int row)
 {
     FILE* fp;
     int line;
@@ -461,7 +461,7 @@ int LoadFileStuClassInf(StuCourseList* listStuCourse)
     }
     else
     {
-        for (line = 0; line < MAX_STUCOURSELIST_LINE; line++)
+        for (line = 0; line < row; line++)
         {
             listStuCourse->lengthStuCourse++;
             fscanf(fp,"%s", listStuCourse->StuCourseData[line].studentID);
@@ -473,7 +473,7 @@ int LoadFileStuClassInf(StuCourseList* listStuCourse)
     }
 }
 //写入学生名单信息
-int LoadFileStuInf(StuList* listStudent)
+int LoadFileStuInf(StuList* listStudent, int row)
 {
     FILE* fp;
     int line;
@@ -487,7 +487,7 @@ int LoadFileStuInf(StuList* listStudent)
     }
     else
     {
-        for (line = 0; line < MAX_STULIST_LINE; line++)
+        for (line = 0; line < row; line++)
         {
             listStudent->lengthStu++;
             fscanf(fp, "%s", listStudent->studentData[line].studentID);
@@ -553,6 +553,67 @@ int CreatScoreList(Scorelist* listScore, StuList* listStudent, StuCourseList* li
     return 1;
 
 
+}
+void CheckDataFileRow(int* rowStu, int* rowCourse, int* rowStuCourse)
+{
+    FILE* fp;
+
+    if ((fp = fopen("slist.txt", "r")) == NULL)
+    {
+        printf("无法打开学生文件\n\a");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        *rowStu=CheckOneFileRow(fp);
+    }
+
+    fclose(fp);
+
+    if ((fp = fopen("clist.txt", "r")) == NULL)
+    {
+        printf("无法打开课程文件\n\a");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        *rowCourse = CheckOneFileRow(fp);
+    }
+
+    fclose(fp);
+
+    if ((fp = fopen("sclist.txt", "r")) == NULL)
+    {
+        printf("无法打开选课文件\n\a");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        *rowStuCourse = CheckOneFileRow(fp);
+    }
+
+    fclose(fp);
+
+    return;
+}
+int CheckOneFileRow(FILE*ptr)
+{
+    int rowNum=1;
+    char ch=0;
+    while ((ch=fgetc(ptr)) != EOF)
+    {
+        if (ch == '\n')
+        {
+            rowNum++;
+        }
+    }
+
+    
+    fflush(ptr);
+    return rowNum;
 }
 //获取课程填入成绩单的位置
 int GetClassLoaction(char* ClassID, CourseList* listCourse)
@@ -1113,7 +1174,7 @@ void CourseListInsert(CourseList* listCourse, Course* insertData)
 {
     Course* newDataBase;
 
-    if (++ (listCourse->lengthCourse) >= listCourse->listSizeCourse)
+    if (++ (listCourse->lengthCourse) >= listCourse->listSizeCourse && (listCourse->listSizeCourse + LIST_INCREASE)<INT_MAX)
     {
         newDataBase = (Course*)realloc(listCourse->CourseListData, (listCourse->listSizeCourse + LIST_INCREASE) * sizeof(Course));
 
