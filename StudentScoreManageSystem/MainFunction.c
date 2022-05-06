@@ -201,7 +201,9 @@ char AskDelete(void)
 
     choice = tolower(getchar());
     while (getchar() != '\n');
+    system("cls");
     return choice;
+
 }
 
 char ReplaceMenu(void)
@@ -1993,6 +1995,7 @@ void PrintSearchCourse(const CourseList* listCourse, const int searchNum)
         printf("\t\t%-25s\t\t%-10s\t\t%-4.1f\n", listCourse->CourseListData[searchNum].couresName, listCourse->CourseListData[searchNum].couresID,
             listCourse->CourseListData[searchNum].credit);
         PrintLine();
+        system("pause");
     }
 
 
@@ -2001,7 +2004,7 @@ void PrintSearchCourse(const CourseList* listCourse, const int searchNum)
         SearchFailure();
     }
 
-    system("pause");
+
     system("cls");
     return;
 
