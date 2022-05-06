@@ -124,57 +124,57 @@ typedef struct{
 //                                          成绩管理系统 函数声明
 
 //起始页菜单
-extern char StartMenu(void);
+extern inline char StartMenu(void);
 //主菜单
-extern char MainMenu(void);
+extern inline char MainMenu(void);
 //显示菜单
-extern char DisplayMenu(void);
+extern inline char DisplayMenu(void);
 //输出课程选择菜单
-extern char CourseDisplayChoiceMenu(void);
+extern inline char CourseDisplayChoiceMenu(void);
 //输出学生信息选择菜单
-extern char StuDisplayChoiceMenu(void);
+extern inline char StuDisplayChoiceMenu(void);
 //输出成绩选择菜单
-extern char ScoreDisplayChoiceMenu(void);
+extern inline char ScoreDisplayChoiceMenu(void);
 //增添元素菜单
-extern char InsertMenu(void);
+extern inline char InsertMenu(void);
 //询问更改菜单
-extern  char ReplaceMenu(void);
+extern inline char ReplaceMenu(void);
 //输入退出询问菜单
-extern char InsertExitMenu(void);
+extern inline char InsertExitMenu(void);
 //删除信息菜单
-extern char DeleteMenu(void);
+extern inline char DeleteMenu(void);
 //询问是否删除该数据
-extern char AskDelete(void);
+extern inline char AskDelete(void);
 //查询信息菜单
-extern char QueryMenu(void);
+extern inline char QueryMenu(void);
 //查询学生信息方式菜单
-extern char QueryStuMethodMenu(void);
+extern inline char QueryStuMethodMenu(void);
 //查询课程信息方式菜单
-extern  char QueryCourseMethodMenu(void);
+extern inline char QueryCourseMethodMenu(void);
 //获取需要查询的学号
-extern char* SearchInputStudentID(char*);
+extern inline char* SearchInputStudentID(char*);
 //获取需要查询的姓名
-extern char* SearchInputStudentName(char*);
-//获取要查询的课程号
-extern char* SearchInputCourseID(char*);
+extern inline char* SearchInputStudentName(char*);
+//获取需要查询的课程号
+extern inline char* SearchInputCourseID(char*);
 //获取需要查询的姓名
-extern char* SearchInputCourseName(char*);
+extern inline char* SearchInputCourseName(char*);
 //导出文件菜单选择
-extern char WriteToFileMenu(void);
+extern inline char WriteToFileMenu(void);
 //打印一条横线
-extern void PrintLine(void);
+extern inline void PrintLine(void);
 //输入错误提示
-extern void ErrorInputMenu(void);
+extern inline void ErrorInputMenu(void);
 //内存分配失败提示
-extern void ErrorMemoryMenu(void);
+extern inline void ErrorMemoryMenu(void);
 //导出成功提示
-extern void OutPutSuccess(void);
+extern inline void OutPutSuccess(void);
 //导出失败提示
-extern void OutPutFailure(void);
+extern inline void OutPutFailure(void);
 //显示查找失败提示
-extern void SearchFailure(void);
+extern inline void SearchFailure(void);
 //录入学生选课失败提示
-extern void InputStuCourseFailure(void);
+extern inline void InputStuCourseFailure(void);
 
 //初始化相关函数声明
 // ———————————————————————————————————————
@@ -231,9 +231,9 @@ extern void SortStuList(StuList*,int,int);
 //QuickSort划分
 extern int PartitionStu(StuList*,int,int);
 //交换两个学生信息位置
-extern void SwapStuElement(Student*, Student*);
+extern inline void SwapStuElement(Student*, Student*);
 //将学号转化为数字
-extern int StuID_Num(const char*);
+extern inline int StuID_Num(const char*);
 //————————————————————————————————————————
 
 //将成绩列表按平均成绩排序（采用随机化快速排序（Quicksort）算法）
@@ -245,7 +245,7 @@ extern void SortScoreList(Scorelist*, int, int);
 //QuickSort划分
 extern int PartitionScore(Scorelist*, int, int);
 //交换两个学生信息位置
-extern void SwapScoreElement(StuScore*, StuScore*);
+extern inline void SwapScoreElement(StuScore*, StuScore*);
 //————————————————————————————————————————
 
 //将课程按课程号升序排序(冒泡排序算法）
@@ -255,7 +255,7 @@ extern void SortCourseList(CourseList*);
 //比较两个课程名的大小
 extern int CourseNumCopmare(const char*,const char*);
 //交换两个课程信息位置
-extern void SwapCourseElement(Course*,Course*);
+extern inline void SwapCourseElement(Course*,Course*);
 
 //————————————————————————————————————————
 
