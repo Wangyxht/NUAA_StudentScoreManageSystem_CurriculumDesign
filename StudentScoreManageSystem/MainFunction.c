@@ -1172,7 +1172,7 @@ void InputCourseData(Course* Input)
     system("cls");
 }
 
-void CourseListInsert(CourseList* listCourse, Course* insertData)
+void CourseListInsert(CourseList* listCourse, Course* insertData, const Scorelist* listScore)
 {
     Course* newDataBase;
 
@@ -1197,14 +1197,67 @@ void CourseListInsert(CourseList* listCourse, Course* insertData)
     listCourse->CourseListData[listCourse->lengthCourse - 1] = *insertData;
     if (listCourse->lengthCourse > 1)
     {
-        listCourse->CourseListData[listCourse->lengthCourse - 1].scorelistLocation =
-            listCourse->CourseListData[listCourse->lengthCourse - 2].scorelistLocation + 1;
+       /* listCourse->CourseListData[listCourse->lengthCourse - 1].scorelistLocation =
+            listCourse->CourseListData[listCourse->lengthCourse - 2].scorelistLocation + 1;*/
+        //listCourse->CourseListData[listCourse->lengthCourse - 1].scorelistLocation =
+        //    lastCourseNum;
+
+        listCourse->CourseListData[listCourse->lengthCourse - 1].scorelistLocation = 
+            ScanVoidScoreLocation(listScore, listCourse);
     }
     else
     {
         listCourse->CourseListData[listCourse->lengthCourse - 1].scorelistLocation = 0;
     }
 
+}
+int ScanVoidScoreLocation(Scorelist* listScore, CourseList* listCourse)
+{
+    int i, j;
+
+    for (i = 0; i < MAX_SCORE_DATA; i++)
+    {
+
+        if (SearchSameLocation(listCourse, i) == 1)
+        {
+            continue;
+        }
+        
+        for (j = 0; j < listScore->lengthScore; j++)
+        {
+            if (listScore->StuScoreData[j].score[i]>=0)
+            {
+                break;
+            }
+
+
+        }
+
+        if (j < listScore->lengthScore)
+        {
+            continue;
+        }
+        else
+        {
+            return i;
+        }
+    }
+
+
+}
+
+int SearchSameLocation(CourseList* listCourse, int target)
+{
+    int i;
+    for (i = 0; i < listCourse->lengthCourse; i++)
+    {
+        if (listCourse->CourseListData[i].scorelistLocation == target)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
 }
 
 int CourseReplaceSearch(const CourseList* listCourse,const char* Input)

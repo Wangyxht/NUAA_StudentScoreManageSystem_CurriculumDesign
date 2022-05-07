@@ -24,6 +24,7 @@
 //#define MAX_STUCOURSELIST_LINE 14
 //初始学生表文件行数
 //#define MAX_STULIST_LINE 9
+
 //最大成绩个数
 #define MAX_SCORE_DATA 30
 //最大学生ID长度
@@ -196,7 +197,6 @@ extern int CreatScoreList(Scorelist*,StuList*,StuCourseList*,CourseList*);
 extern int GetClassLoaction(char*,CourseList*);
 //计算加权平均成绩
 extern float CalculateAverage(float*,CourseList*,float*);
-
 //显示列表信息 函数声明
 // ———————————————————————————————————————
 //显示学生信息
@@ -275,7 +275,7 @@ extern void InputCourseData(Course*);
 //顺序查找相同的课程ID
 extern int CourseReplaceSearch(const CourseList*, const char*);
 //置入新的课程信息
-extern void CourseListInsert(CourseList*, Course*);
+extern void CourseListInsert(CourseList*, Course*, const Scorelist*);;
 //替换课程信息
 extern void CourselistReplace(CourseList*, Course*, Scorelist*, const int);
 //置入新的选课信息
@@ -292,6 +292,10 @@ extern void InsertScoreListStu(Scorelist*,Student*);
 extern void ScoreListReplaceName(Scorelist*, Student*);
 //将新增的学生成绩填入成绩表
 extern void InsertScoreListScore(Scorelist*, CourseList* ,StuCourse*);
+//获取一个全空的score位置
+extern int ScanVoidScoreLocation(Scorelist*,CourseList*);
+//查询一个课程表中是否有相同的scorelocation
+extern int SearchSameLocation(CourseList*, int);
 //————————————————————————————————————————
 
 //删除元素 函数声明

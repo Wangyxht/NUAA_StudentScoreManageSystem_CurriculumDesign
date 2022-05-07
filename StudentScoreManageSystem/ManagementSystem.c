@@ -258,7 +258,7 @@ int main(void)
                             InputCourseData(&InsertCourseElement);
                             if ((replace=CourseReplaceSearch(&ListCourse, InsertCourseElement.couresID)) == -1)
                             {
-                                CourseListInsert(&ListCourse,&InsertCourseElement);
+                                CourseListInsert(&ListCourse,&InsertCourseElement,&ListScore);
                             }
                             else
                             {
