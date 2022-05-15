@@ -24,7 +24,7 @@ char StartMenu(void)
     printf("\n\n\n\n\n\n\n");
     PrintLine();
     printf("\t\t\t                             学生成绩管理系统\n\n");
-    printf("\t\t               版本号：Ver Alpha 1.0.0\t\t更新日期：2022/5/4\n\n");
+    printf("\t\t               版本号：Ver Alpha 1.0.3\t\t更新日期：2022/5/7\n\n");
     printf("\t\t                     按Q退出程序，按其他任意键进入管理系统\n\n");
     PrintLine();
 
@@ -212,7 +212,7 @@ char ReplaceMenu(void)
     printf("\n\n\n\n\n");
     PrintLine();
     printf("\t\t                                       [!]\n\n");
-    printf("\t\t\t         *查询到该学生ID已存在于列表，是否进行覆盖？*\n\n");
+    printf("\t\t\t         *查询到该关键字ID已存在于列表，是否进行覆盖？*\n\n");
     printf("\t\t                             \tY）是      N）否\t\t\n\n");
     PrintLine();
     printf("\t\t\t\t请输入需要进行的操作:_______\b\b\b\b");
@@ -1211,7 +1211,7 @@ void CourseListInsert(CourseList* listCourse, Course* insertData, const Scorelis
     }
 
 }
-int ScanVoidScoreLocation(Scorelist* listScore, CourseList* listCourse)
+int ScanVoidScoreLocation(const Scorelist* listScore,const CourseList* listCourse)
 {
     int i, j;
 
@@ -1243,10 +1243,10 @@ int ScanVoidScoreLocation(Scorelist* listScore, CourseList* listCourse)
         }
     }
 
-
+    return -1;
 }
 
-int SearchSameLocation(CourseList* listCourse, int target)
+int SearchSameLocation(const CourseList* listCourse, int target)
 {
     int i;
     for (i = 0; i < listCourse->lengthCourse; i++)
@@ -1961,8 +1961,11 @@ void SearchScoreStudentName(const Scorelist* listScore, const CourseList* listCo
 
     if (searchNum ==  0)
     {
+        printf("\n\n\n\n\n");
         PrintLine();
         printf("\n\n\t\t\t\t\t\t无搜索结果\n\n");
+        PrintLine();
+        system("pause");
     }
 
 

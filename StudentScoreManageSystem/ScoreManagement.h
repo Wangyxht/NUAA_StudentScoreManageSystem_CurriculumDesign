@@ -18,6 +18,7 @@
 #define LIST_INIT_SIZE 100
 //每次分配新内存的长度
 #define LIST_INCREASE 10
+
 //初始课程表文件行数
 //#define MAX_COURSELIST_LINE 8
 //初始选课表文件行数
@@ -94,7 +95,7 @@ typedef struct{
 typedef struct {
     StuCourse* StuCourseData;
     int lengthStuCourse;//当前长度
-    int listSizeStuCourse;//当前已经分配的储存容量（以sizeof（StuCourseList）为单位）
+    int listSizeStuCourse;//当前已经分配的储存容量（以sizeof（StuCourse）为单位）
 }StuCourseList;
 
 //结构定义 学生个人信息线性表
@@ -293,9 +294,9 @@ extern void ScoreListReplaceName(Scorelist*, Student*);
 //将新增的学生成绩填入成绩表
 extern void InsertScoreListScore(Scorelist*, CourseList* ,StuCourse*);
 //获取一个全空的score位置
-extern int ScanVoidScoreLocation(Scorelist*,CourseList*);
+extern int ScanVoidScoreLocation(const Scorelist*,const CourseList*);
 //查询一个课程表中是否有相同的scorelocation
-extern int SearchSameLocation(CourseList*, int);
+extern int SearchSameLocation(const CourseList*, int);
 //————————————————————————————————————————
 
 //删除元素 函数声明
